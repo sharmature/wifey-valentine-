@@ -1,0 +1,274 @@
+.rose-day {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.rose-header h1 {
+  font-size: 48px;
+  color: #e91e63;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: #c2185b;
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.rose-petals {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.rose-petals .petal {
+  font-size: 24px;
+  animation: rotate 4s linear infinite;
+  display: inline-block;
+}
+
+.rose-petals .petal:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.rose-petals .petal:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.puzzle-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffeef7 0%, #fff5f9 100%);
+  border-radius: 10px;
+  border: 2px solid #ffc1e3;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: 24px;
+  color: #e91e63;
+  font-weight: bold;
+}
+
+.puzzle-container {
+  margin: 30px 0;
+}
+
+.puzzle-grid {
+  display: grid;
+  gap: 4px;
+  background: linear-gradient(135deg, #ff6b9d 0%, #c2185b 100%);
+  padding: 8px;
+  border-radius: 15px;
+  aspect-ratio: 1;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 8px 24px rgba(233, 30, 99, 0.3);
+  border: 3px solid #ffc1e3;
+  position: relative;
+}
+
+.puzzle-grid::before {
+  content: '🌹';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  z-index: 1;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.puzzle-piece {
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s;
+  background-image: url('/our-photo.jpg');
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.puzzle-piece:hover:not(.empty) {
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+}
+
+.puzzle-piece.empty {
+  background: #f0f0f0;
+  cursor: default;
+}
+
+.puzzle-piece.correct {
+  border: 3px solid #ff6b9d;
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.5);
+}
+
+.piece-number {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(233, 30, 99, 0.4);
+  border: 2px solid #ffc1e3;
+}
+
+.surprise-reveal {
+  padding: 40px 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.celebration {
+  font-size: 48px;
+  margin-bottom: 20px;
+  animation: bounce 1s infinite;
+  filter: drop-shadow(0 4px 8px rgba(233, 30, 99, 0.3));
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.surprise-reveal h2 {
+  font-size: 36px;
+  background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 30px;
+}
+
+.surprise-message {
+  background: linear-gradient(135deg, #ffeef7 0%, #fff5f9 100%);
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #ffc1e3;
+}
+
+.message-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.message-text strong {
+  color: #e91e63;
+  font-size: 20px;
+}
+
+.stats-summary {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ffc1e3;
+  color: #666;
+  font-size: 16px;
+}
+
+.stats-summary p {
+  margin: 5px 0;
+}
+
+.instructions {
+  margin-top: 30px;
+  padding: 15px;
+  background: linear-gradient(135deg, #ffeef7 0%, #fff5f9 100%);
+  border-radius: 10px;
+  color: #c2185b;
+  font-size: 14px;
+  border: 2px solid #ffc1e3;
+}
+
+.rose-hint {
+  margin-top: 10px;
+  font-style: italic;
+  color: #e91e63;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .rose-day {
+    padding: 20px;
+  }
+  
+  .rose-header h1 {
+    font-size: 36px;
+  }
+  
+  .puzzle-grid {
+    max-width: 100%;
+  }
+  
+  .message-text {
+    font-size: 16px;
+  }
+}
+
