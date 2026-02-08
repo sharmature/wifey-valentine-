@@ -131,13 +131,13 @@ function RoseDay() {
                       piece.currentPosition === piece.correctPosition ? 'correct' : ''
                     }`}
                     style={{
-                      backgroundPosition: `-${correctCol * (100 / PUZZLE_SIZE)}% -${correctRow * (100 / PUZZLE_SIZE)}%`,
+                      backgroundPosition: `-${correctCol * 100}% -${correctRow * 100}%`,
                       backgroundSize: `${PUZZLE_SIZE * 100}%`,
                     }}
                     onClick={() => !isLast && handlePieceClick(piece)}
                   >
                     {!isLast && (
-                      <span className="piece-number">{piece.id + 1}</span>
+                      <span className="piece-number" title={`Piece ${piece.id + 1}`}>{piece.id + 1}</span>
                     )}
                   </div>
                 )
