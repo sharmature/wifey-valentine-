@@ -130,10 +130,10 @@ function RoseDay() {
                     className={`puzzle-piece ${isLast ? 'empty' : ''} ${
                       piece.currentPosition === piece.correctPosition ? 'correct' : ''
                     }`}
-                    style={{
-                      backgroundPosition: `-${correctCol * 100}% -${correctRow * 100}%`,
-                      backgroundSize: `${PUZZLE_SIZE * 100}%`,
-                    }}
+                    style={!isLast ? {
+                      backgroundPosition: `${-correctCol * 100}% ${-correctRow * 100}%`,
+                      backgroundSize: `${PUZZLE_SIZE * 100}% ${PUZZLE_SIZE * 100}%`,
+                    } : {}}
                     onClick={() => !isLast && handlePieceClick(piece)}
                   >
                     {!isLast && (
