@@ -124,10 +124,10 @@ function RoseDay() {
                 const correctRow = Math.floor(piece.correctPosition / PUZZLE_SIZE)
                 const correctCol = piece.correctPosition % PUZZLE_SIZE
                 
-                // Calculate background position for 3x3 grid
-                // For piece at (row, col), we need to shift the 300% sized image
-                const bgX = correctCol === 0 ? '0%' : correctCol === 1 ? '-100%' : '-200%'
-                const bgY = correctRow === 0 ? '0%' : correctRow === 1 ? '-100%' : '-200%'
+                // Calculate background position - each piece shows 1/3 of the 300% sized image
+                // For 3x3: col 0 = 0%, col 1 = -100%, col 2 = -200%
+                const bgXPercent = -correctCol * 100
+                const bgYPercent = -correctRow * 100
                 
                 return (
                   <div
@@ -137,7 +137,7 @@ function RoseDay() {
                     }`}
                     style={!isLast ? {
                       backgroundImage: `url('/our-photo.JPG')`,
-                      backgroundPosition: `${bgX} ${bgY}`,
+                      backgroundPosition: `${bgXPercent}% ${bgYPercent}%`,
                       backgroundSize: '300% 300%',
                       backgroundRepeat: 'no-repeat',
                       backgroundColor: 'transparent',
