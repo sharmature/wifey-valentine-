@@ -125,18 +125,17 @@
 }
 
 .puzzle-piece {
-  background: #fff;
   border-radius: 6px;
   cursor: pointer;
   position: relative;
   transition: transform 0.2s;
-  background-image: url('/our-photo.JPG'), url('/our-photo.jpg');
   background-repeat: no-repeat;
   overflow: hidden;
   min-height: 100px;
 }
 
 .puzzle-piece:not(.empty) {
+  background-image: url('/our-photo.JPG'), url('/our-photo.jpg');
   background-color: transparent;
 }
 
