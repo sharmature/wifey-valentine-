@@ -53,9 +53,11 @@ function RoseDay() {
   const handlePieceClick = (clickedPiece) => {
     if (solved) return
     
-    const emptyPiece = pieces.find(p => p.id === PUZZLE_SIZE * PUZZLE_SIZE - 1)
-    const clickedIndex = pieces.findIndex(p => p.id === clickedPiece.id)
-    const emptyIndex = pieces.findIndex(p => p.id === emptyPiece.id)
+    // Sort pieces by currentPosition to match visual grid
+    const sortedPieces = [...pieces].sort((a, b) => a.currentPosition - b.currentPosition)
+    const emptyPiece = sortedPieces.find(p => p.id === PUZZLE_SIZE * PUZZLE_SIZE - 1)
+    const clickedIndex = sortedPieces.findIndex(p => p.id === clickedPiece.id)
+    const emptyIndex = sortedPieces.findIndex(p => p.id === emptyPiece.id)
     
     // Check if clicked piece is adjacent to empty space
     const row = Math.floor(clickedIndex / PUZZLE_SIZE)
@@ -68,10 +70,15 @@ function RoseDay() {
       (Math.abs(col - emptyCol) === 1 && row === emptyRow)
     
     if (isAdjacent) {
-      const newPieces = [...pieces]
-      const temp = newPieces[clickedIndex].currentPosition
-      newPieces[clickedIndex].currentPosition = newPieces[emptyIndex].currentPosition
-      newPieces[emptyIndex].currentPosition = temp
+      const newPieces = pieces.map(p => {
+        if (p.id === clickedPiece.id) {
+          return { ...p, currentPosition: emptyPiece.currentPosition }
+        }
+        if (p.id === emptyPiece.id) {
+          return { ...p, currentPosition: clickedPiece.currentPosition }
+        }
+        return p
+      })
       setPieces(newPieces)
       setMoves(moves + 1)
     }
@@ -110,7 +117,7 @@ function RoseDay() {
 
           <div className="puzzle-container">
             <div className="puzzle-grid" style={{ gridTemplateColumns: `repeat(${PUZZLE_SIZE}, 1fr)` }}>
-              {pieces.map((piece) => {
+              {[...pieces].sort((a, b) => a.currentPosition - b.currentPosition).map((piece) => {
                 const isLast = piece.id === PUZZLE_SIZE * PUZZLE_SIZE - 1
                 const row = Math.floor(piece.currentPosition / PUZZLE_SIZE)
                 const col = piece.currentPosition % PUZZLE_SIZE
