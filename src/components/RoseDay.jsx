@@ -131,12 +131,14 @@ function RoseDay() {
                       piece.currentPosition === piece.correctPosition ? 'correct' : ''
                     }`}
                     style={!isLast ? {
-                      backgroundImage: `url('/our-photo.JPG'), url('/our-photo.jpg')`,
+                      backgroundImage: `url('/our-photo.JPG')`,
                       backgroundPosition: `${-correctCol * 100}% ${-correctRow * 100}%`,
                       backgroundSize: `${PUZZLE_SIZE * 100}% ${PUZZLE_SIZE * 100}%`,
                       backgroundRepeat: 'no-repeat',
+                      backgroundColor: 'transparent',
                     } : {
-                      backgroundColor: '#f0f0f0'
+                      backgroundColor: '#f0f0f0',
+                      backgroundImage: 'none'
                     }}
                     onClick={() => !isLast && handlePieceClick(piece)}
                   >

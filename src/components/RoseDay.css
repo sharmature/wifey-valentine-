@@ -132,10 +132,6 @@
   background-repeat: no-repeat;
   overflow: hidden;
   min-height: 100px;
-}
-
-.puzzle-piece:not(.empty) {
-  background-image: url('/our-photo.JPG'), url('/our-photo.jpg');
   background-color: transparent;
 }
 
